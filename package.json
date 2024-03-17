@@ -1,7 +1,7 @@
 {
   "name": "ai-cosearch-chrome-extension",
   "version": "1.0.0",
-  "description": "",
+  "description": "Google Chrome extension that provides an assistant to complement search",
   "main": "index.js",
   "scripts": {
     "lint:code": "eslint . --ext ts,tsx --cache",
@@ -10,8 +10,8 @@
     "todo": "npx leasot '**/**' '.**/**' -i '**/node_modules/**' -S -x",
     "clean": "rm -rf dist node_modules"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["ai", "chrome", "extension", "assistant", "copilot"],
+  "author": "Abel Lopes (@abelflopes)",
   "license": "ISC",
   "dependencies": {
     "react": "^18.2.0",
