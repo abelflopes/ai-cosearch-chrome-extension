@@ -1,0 +1,29 @@
+{
+  "name": "ai-cosearch-chrome-extension",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint:code": "eslint . --ext ts,tsx --cache",
+    "lint:typescript": "tsc --noEmit",
+    "format": "prettier . --check --cache --ignore-unknown",
+    "todo": "npx leasot '**/**' '.**/**' -i '**/node_modules/**' -S -x",
+    "clean": "rm -rf dist node_modules"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-ck": "^1.2.5"
+  },
+  "devDependencies": {
+    "@abelflopes/eslint-config-tsr-pro": "^2.0.1",
+    "@abelflopes/prettier-config-pro": "^1.0.0",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.2",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
+  }
+}
