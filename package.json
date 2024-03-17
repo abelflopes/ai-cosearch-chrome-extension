@@ -4,13 +4,22 @@
   "description": "Google Chrome extension that provides an assistant to complement search",
   "main": "index.js",
   "scripts": {
+    "build": "NODE_ENV=production webpack",
+    "watch": "NODE_ENV=production webpack watch",
+    "serve": "NODE_ENV=production webpack serve",
     "lint:code": "eslint . --ext ts,tsx --cache",
     "lint:typescript": "tsc --noEmit",
     "format": "prettier . --check --cache --ignore-unknown",
     "todo": "npx leasot '**/**' '.**/**' -i '**/node_modules/**' -S -x",
     "clean": "rm -rf dist node_modules"
   },
-  "keywords": ["ai", "chrome", "extension", "assistant", "copilot"],
+  "keywords": [
+    "ai",
+    "chrome",
+    "extension",
+    "assistant",
+    "copilot"
+  ],
   "author": "Abel Lopes (@abelflopes)",
   "license": "ISC",
   "dependencies": {
@@ -20,10 +29,16 @@
   "devDependencies": {
     "@abelflopes/eslint-config-tsr-pro": "^2.0.1",
     "@abelflopes/prettier-config-pro": "^1.0.0",
+    "chrome-types": "^0.1.273",
     "eslint": "^8.57.0",
+    "fork-ts-checker-webpack-plugin": "^9.0.2",
+    "glob": "^10.3.10",
     "prettier": "^3.2.5",
+    "swc-loader": "^0.2.6",
+    "ts-node": "^10.9.2",
     "typescript": "^5.4.2",
     "webpack": "^5.90.3",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.3"
   }
 }

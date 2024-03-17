@@ -10,8 +10,8 @@ button.textContent = "Open Side Panel";
 
 console.log("Content window.location", window.location);
 
-button.addEventListener("click", function () {
-  chrome.runtime.sendMessage({ type: "open_side_panel" });
+button.addEventListener("click", () => {
+  void chrome.runtime.sendMessage({ type: "open_side_panel" });
 });
 
 document.body.append(button);

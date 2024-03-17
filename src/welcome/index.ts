@@ -10,10 +10,10 @@ void (async () => {
     lastFocusedWindow: true,
   });
 
-  const tabId = tab.id;
+  const tabId = tab?.id;
   const button = document.getElementById("openSidePanel");
 
-  button.addEventListener("click", async () => {
+  button?.addEventListener("click", async () => {
     await chrome.sidePanel.open({ tabId });
     await chrome.sidePanel.setOptions({
       tabId,
