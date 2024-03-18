@@ -11,10 +11,12 @@ chrome.sidePanel
   .setPanelBehavior({ openPanelOnActionClick: true })
   .catch((error) => console.error(error));
 
+// When tab is updated
 chrome.tabs.onUpdated.addListener(async (tabId, info, tab) => {
   console.log("tab updated", tabId, info, tab);
 });
 
+// When extension was just installed
 chrome.runtime.onInstalled.addListener(() => {
   console.log("Extension installed");
   chrome.contextMenus.create({
@@ -25,6 +27,7 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.tabs.create({ url: PATH.WELCOME });
 });
 
+// When context menu is clicked
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === MENU_ITEM.OPEN_SIDE_PANEL) {
     // This will open the panel in all the pages on the current window.
@@ -32,6 +35,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   }
 });
 
+// When message is received
 chrome.runtime.onMessage.addListener((message, sender) => {
   // The callback for runtime.onMessage must return falsy if we're not sending a response
   void (async () => {

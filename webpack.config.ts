@@ -49,15 +49,22 @@ const config: Configuration[] = PATHS.entryPoints.map((entryFile, key) => {
       filename: `${fileName}.js`,
       path: path.resolve(PATHS.rootDir, PATHS.distDir, folderName),
     },
-    stats: "minimal",
+    stats: env.NODE_ENV === "development" ? "minimal" : "normal",
     resolve: {
       modules: [path.resolve(PATHS.rootDir, "src"), path.resolve(PATHS.rootDir, "node_modules")],
-      extensions: [".ts", ".tsx"],
+      // Add `.ts` and `.tsx` as a resolvable extension.
+      extensions: [".ts", ".tsx", ".js"],
+      // Add support for TypeScripts fully qualified ESM imports.
+      extensionAlias: {
+        ".js": [".js", ".ts"],
+        // ".cjs": [".cjs", ".cts"],
+        // ".mjs": [".mjs", ".mts"],
+      },
     },
     module: {
       rules: [
         {
-          test: /\.ts$/u,
+          test: /\.(ts|tsx)$/u,
           exclude: /(node_modules)/u,
           use: {
             loader: "swc-loader",
