@@ -16,6 +16,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, info, tab) => {
 });
 
 chrome.runtime.onInstalled.addListener(() => {
+  console.log("Extension installed");
   chrome.contextMenus.create({
     id: MENU_ITEM.OPEN_SIDE_PANEL,
     title: "Open side panel",
