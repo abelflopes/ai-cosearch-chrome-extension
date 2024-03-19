@@ -35,7 +35,7 @@ const getManifest = (icons: Record<string, string>): object => ({
   background: {
     service_worker: APP_PATHS.SERVICE_WORKER,
   },
-  permissions: ["sidePanel", "contextMenus"],
+  permissions: ["sidePanel", "contextMenus", "unlimitedStorage"],
 });
 
 fs.mkdirSync(path.dirname(distManifestPath), { recursive: true });

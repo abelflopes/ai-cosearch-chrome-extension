@@ -13,12 +13,11 @@ chrome.sidePanel
 
 // When tab is updated
 chrome.tabs.onUpdated.addListener(async (tabId, info, tab) => {
-  console.log("tab updated", tabId, info, tab);
+  console.log("Service worker tab updated", tabId, info, tab);
 });
 
 // When extension was just installed
 chrome.runtime.onInstalled.addListener(() => {
-  console.log("Extension installed");
   chrome.contextMenus.create({
     id: MENU_ITEM.OPEN_SIDE_PANEL,
     title: "Open side panel",
@@ -52,3 +51,37 @@ chrome.runtime.onMessage.addListener((message, sender) => {
 
   return undefined;
 });
+
+// Test / Debug
+void (async (): Promise<void> => {
+  chrome.runtime.onConnect.addListener((port) => {
+    console.log("__service-worker: onConnect port", port.name);
+
+    port.onMessage.addListener((message) => {
+      console.log("__service-worker: onConnect onMessage", message);
+    });
+  });
+
+  chrome.runtime.onMessage.addListener((message, sender) => {
+    console.log("__service-worker: message, sender", message, sender);
+
+    return undefined;
+  });
+
+  chrome.runtime.connect(undefined, { name: "__service-worker" });
+
+  console.log("__service-worker: sendMessage");
+  const promise = chrome.runtime.sendMessage({ action: "__service-worker message" });
+
+  console.log("promise", promise);
+  console.log("req", await promise);
+
+  setTimeout(() => {
+    console.log("__service-worker: timeout");
+  }, 0);
+
+  setInterval(() => {
+    console.log("__service-worker: sendMessage ping");
+    void chrome.runtime.sendMessage({ action: "__service-worker ping message" });
+  }, 1000);
+})();
