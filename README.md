@@ -1,6 +1,25 @@
 # AI CoSearch Chrome Extension
 
-# Dev Resources
+## TODO
+
+- disable for this site
+- disable for this page
+- settings
+    - open ai api key
+    - blocklist
+    - whitelist
+    - ai model
+    - prompt temperature
+    - safety parsing
+- history
+    - href
+    - date
+    - html
+- safety measures - forms, inputs, passwords, contenteditable
+- convert to markdown
+
+
+## Dev Resources
 
 - [Manifest File Format](https://developer.chrome.com/docs/extensions/reference/manifest)
 - [Side Panel API](https://developer.chrome.com/docs/extensions/reference/sidePanel/)
