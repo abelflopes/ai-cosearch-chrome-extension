@@ -5,7 +5,7 @@
  * @see https://developer.chrome.com/docs/extensions/reference/manifest/content-scripts
  */
 
-import { ACTION } from "../common/constants";
+import { ACTION } from "../_common/constants";
 
 const button = document.createElement("button");
 button.textContent = "Open Side Panel";

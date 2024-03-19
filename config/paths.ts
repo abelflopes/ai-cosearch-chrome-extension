@@ -7,4 +7,6 @@ export const distDir = path.resolve(rootDir, "dist");
 
 export const publicDir = path.resolve(rootDir, "public");
 
-export const entryPoints = globSync(path.resolve(rootDir, "./src/*/index.ts*"));
+export const entryPoints = globSync(path.resolve(rootDir, "./src/*/index.ts*"), {
+  ignore: path.resolve(rootDir, "./src/_*/*"),
+});

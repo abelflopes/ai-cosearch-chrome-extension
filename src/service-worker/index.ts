@@ -4,7 +4,7 @@
  * @see https://developer.chrome.com/docs/extensions/develop/concepts/service-workers
  */
 
-import { ACTION, MENU_ITEM, PATH } from "../common/constants";
+import { ACTION, MENU_ITEM, PATH } from "../_common/constants";
 
 // Allows users to open the side panel by clicking on the action toolbar icon
 chrome.sidePanel

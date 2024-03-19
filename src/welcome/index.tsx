@@ -6,7 +6,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { Button, Container, Manager, Text } from "react-ck";
-import { PATH } from "../common/constants";
+import { PATH } from "../_common/constants";
 
 const rootEl = document.querySelector("#root");
 

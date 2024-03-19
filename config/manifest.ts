@@ -1,4 +1,4 @@
-import { PATH as APP_PATHS } from "../src/common/constants";
+import { PATH as APP_PATHS } from "../src/_common/constants";
 import { packageJson } from "../config/package";
 
 /**
