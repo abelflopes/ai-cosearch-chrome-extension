@@ -44,14 +44,19 @@ sequenceDiagram
     Service Worker-->>Browser: Redirects to welcome page
     Note over Browser: Done
     Note left of User: Usage
-    opt
-        User->>Browser: Navigates to URL
+    par
+        opt
+            User->>Browser: Navigates to URL
+        end
+    and
+        opt
+            Browser->>Browser: Page content (HTML) changes
+        end
     end
-    opt
-        Browser->>Browser: Page content (HTML) changes
-    end
+    Browser->>Content Script: Fires Content Script listeners
     Content Script->>Service Worker: Sends location info (URL) and page HTML
     Service Worker->>Side Panel: Forwards location info (URL) and page HTML
+    Side Panel-->>+Side Panel: Parses data
     Side Panel-->>+Open AI: Make prompt request
     Open AI-->>-Side Panel: Response
     Side Panel->>Browser: Present response in UI
