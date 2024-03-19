@@ -1,7 +1,8 @@
 {
   "name": "ai-cosearch-chrome-extension",
+  "displayName": "AI CoSearch",
   "version": "1.0.0",
-  "description": "Google Chrome extension that provides an assistant to complement search",
+  "description": "Google Chrome extension that provides an assistant to complement search results with AI-generated content",
   "main": "index.js",
   "scripts": {
     "prebuild": "npm run clean:dist && npm run build:manifest",

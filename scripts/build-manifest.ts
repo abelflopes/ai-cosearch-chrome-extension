@@ -9,6 +9,7 @@ import * as CONFIG_PATHS from "../config/paths";
 import { PATH as APP_PATHS } from "../src/common/constants";
 import path from "path";
 import fs from "fs";
+import { packageJson } from "../config/package";
 
 const distManifestPath = path.resolve(CONFIG_PATHS.distDir, "manifest.json");
 const images = globSync(path.resolve(CONFIG_PATHS.publicDir, "icon/**/*.{png,jpg,jpeg,gif,svg}"));
@@ -19,9 +20,9 @@ const icons = Object.fromEntries(
 
 const getManifest = (icons: Record<string, string>): object => ({
   manifest_version: 3,
-  name: "AI CoSearch",
-  version: "1.0",
-  description: "Your AI search assistant",
+  name: packageJson.displayName,
+  version: packageJson.version,
+  description: packageJson.description,
   icons,
   side_panel: {
     default_path: APP_PATHS.SIDE_PANEL,
