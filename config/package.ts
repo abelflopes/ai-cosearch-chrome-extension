@@ -1,4 +1,5 @@
 import { z } from "zod";
+import packageJsonData from "../package.json";
 
 const PackageJsonSchema = z.object({
   name: z.string().min(1),
@@ -7,6 +8,6 @@ const PackageJsonSchema = z.object({
   version: z.string().min(5),
 });
 
-const packageJson = PackageJsonSchema.parse(process.env);
+const packageJson = PackageJsonSchema.parse(packageJsonData);
 
 export { packageJson };

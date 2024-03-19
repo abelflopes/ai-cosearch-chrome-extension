@@ -17,7 +17,10 @@ createRoot(rootEl).render(
     <Manager>
       <Container spacingY>
         <Text variation="h1">Welcome</Text>
-        <Text>You just installed AI CoSearch</Text>
+        <Text>
+          You just installed AI CoSearch. Use the browser normally and additional data will be
+          provided as you search.
+        </Text>
         <Button
           onClick={() => {
             void (async (): Promise<void> => {
@@ -36,7 +39,7 @@ createRoot(rootEl).render(
               });
             })();
           }}>
-          Open side panel
+          Open AI CoSearch
         </Button>
       </Container>
     </Manager>

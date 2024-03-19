@@ -26,20 +26,19 @@ void (async (): Promise<void> => {
   });
 
   // Show extensions page with dev mode enabled
-  const [page] = await browser.pages();
+  const extensionsPage = await browser.newPage();
 
-  if (!page) throw new Error("No page found");
-
-  await page.goto(`chrome://extensions`);
-  await page.waitForNetworkIdle();
-  await page.evaluateHandle(() =>
+  // Open tab in extension page
+  await extensionsPage.goto(`chrome://extensions`);
+  await extensionsPage.waitForNetworkIdle();
+  await extensionsPage.evaluateHandle(() =>
     document
       .querySelector("body > extensions-manager")
       ?.shadowRoot?.querySelector("#toolbar")
       ?.shadowRoot?.querySelector<HTMLButtonElement>("#devMode")
       ?.click(),
   );
-  await page.evaluateHandle(() =>
+  await extensionsPage.evaluateHandle(() =>
     document
       .querySelector("body > extensions-manager")
       ?.shadowRoot?.querySelector("#viewManager")
@@ -48,5 +47,12 @@ void (async (): Promise<void> => {
       ?.querySelector("extensions-item")
       ?.shadowRoot?.querySelector<HTMLButtonElement>("#detailsButton")
       ?.click(),
+  );
+
+  // Navigate to a reddit page
+  const redditPage = await browser.newPage();
+  await redditPage.emulateMediaFeatures([{ name: "prefers-color-scheme", value: "light" }]);
+  await redditPage.goto(
+    "https://www.reddit.com/r/Supernatural/search/?q=space&type=link&cId=0eec1c12-82a9-4677-b8a0-a8005d11bfd4&iId=804248b2-e844-48bb-9670-848b64317e46",
   );
 })();
