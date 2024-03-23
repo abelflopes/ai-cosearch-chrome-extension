@@ -8,7 +8,6 @@
     "prebuild": "npm run clean:dist && npm run build:manifest",
     "build": "NODE_ENV=development webpack",
     "build:manifest": "ts-node -T ./scripts/build-manifest.ts",
-    "postbuild": "npm run test:browser",
     "prestart": "npm run prebuild",
     "start": "NODE_ENV=development webpack watch",
     "test": "jest",
@@ -30,6 +29,7 @@
   "author": "Abel Lopes (@abelflopes)",
   "license": "ISC",
   "dependencies": {
+    "localforage": "^1.10.0",
     "react": "^18.2.0",
     "react-ck": "^1.2.5",
     "react-dom": "^18.2.0",

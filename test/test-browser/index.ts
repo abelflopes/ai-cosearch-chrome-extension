@@ -13,7 +13,7 @@ export class TestBrowser {
     clearTimeout(this.startTo);
     this.startTo = setTimeout(() => {
       void this.start();
-    }, 500);
+    }, 3000);
   }
 
   public async start(): Promise<void> {
