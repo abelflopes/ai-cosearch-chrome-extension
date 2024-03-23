@@ -6,7 +6,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { Button, Container, Manager, Text } from "react-ck";
-import { PATH } from "../_common/constants";
+import { openSidePanelAllTabs } from "../_common/actions";
 
 const rootEl = document.querySelector("#root");
 
@@ -23,21 +23,7 @@ createRoot(rootEl).render(
         </Text>
         <Button
           onClick={() => {
-            void (async (): Promise<void> => {
-              const [tab] = await chrome.tabs.query({
-                active: true,
-                lastFocusedWindow: true,
-              });
-
-              const tabId = tab?.id;
-
-              await chrome.sidePanel.open({ tabId });
-              await chrome.sidePanel.setOptions({
-                tabId,
-                path: PATH.SIDE_PANEL,
-                enabled: true,
-              });
-            })();
+            void openSidePanelAllTabs();
           }}>
           Open AI CoSearch
         </Button>

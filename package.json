@@ -6,13 +6,13 @@
   "main": "index.js",
   "scripts": {
     "prebuild": "npm run clean:dist && npm run build:manifest",
-    "build": "NODE_ENV=production webpack",
+    "build": "NODE_ENV=development webpack",
     "build:manifest": "ts-node -T ./scripts/build-manifest.ts",
     "postbuild": "npm run test:browser",
     "prestart": "npm run prebuild",
     "start": "NODE_ENV=development webpack watch",
     "test": "jest",
-    "test:browser": "ts-node-dev ./scripts/run-puppeteer.ts",
+    "test:browser": "ts-node-dev ./scripts/run-browser.ts",
     "lint:code": "eslint . --ext ts,tsx --cache",
     "lint:typescript": "tsc --noEmit",
     "format": "prettier . --check --cache --ignore-unknown",
@@ -32,7 +32,8 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-ck": "^1.2.5",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "turndown": "^7.1.3"
   },
   "devDependencies": {
     "@abelflopes/eslint-config-tsr-pro": "^2.0.1",
@@ -42,6 +43,7 @@
     "@babel/preset-typescript": "^7.23.3",
     "@jest/globals": "^29.7.0",
     "@types/react-dom": "^18.2.22",
+    "@types/turndown": "^5.0.4",
     "chrome-types": "^0.1.273",
     "copy-webpack-plugin": "^12.0.2",
     "eslint": "^8.57.0",

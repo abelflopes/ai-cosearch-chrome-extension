@@ -1,11 +1,15 @@
 import { globSync } from "glob";
 import path from "path";
 import { type Configuration } from "webpack";
-import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+// import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import CopyPlugin from "copy-webpack-plugin";
 import { env } from "./config/env";
 import * as PATHS from "./config/paths";
+import { CustomWebpackPlugin } from "./plugin";
+import { TestBrowser } from "./test/test-browser";
+
+const browser = new TestBrowser();
 
 const config: Configuration[] = PATHS.entryPoints.map((entryFile, key) => {
   const folder = path.dirname(entryFile);
@@ -13,7 +17,10 @@ const config: Configuration[] = PATHS.entryPoints.map((entryFile, key) => {
   const [template] = globSync(path.resolve(folder, "*.{html,ejs}"));
   const fileName = path.parse(entryFile).name;
 
-  const plugins: Configuration["plugins"] = [new ForkTsCheckerWebpackPlugin()];
+  const plugins: Configuration["plugins"] = [
+    new CustomWebpackPlugin({ browser }),
+    // new ForkTsCheckerWebpackPlugin()
+  ];
 
   if (template) {
     plugins.push(

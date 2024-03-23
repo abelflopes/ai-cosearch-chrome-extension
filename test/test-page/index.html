@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test page</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <h1>Test page</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+    <div id="host-1"></div>
+    <p>Deserunt, aliquid?</p>
+    <div id="host-2">
+      <template shadowrootmode="open">
+        <span>I'm also in the shadow</span>
+        <div id="host-3">
+          <template shadowrootmode="open">
+            <span>I'm deep in the shadow</span>
+          </template>
+        </div>
+      </template>
+    </div>
+    <p>Deserunt, aliquid?</p>
+    <script src="./index.js" async defer></script>
+  </body>
+</html>
